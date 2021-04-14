@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/fsnotify/fsnotify"
+	"github.com/joho/godotenv"
 	"github.com/spf13/viper"
 )
 
@@ -40,7 +41,7 @@ func InitViper(path, env string) {
 		viper.SetConfigName("local-config")
 		break
 	case "develop":
-		// godotenv.Load(".env")
+		godotenv.Load(".env")
 		viper.SetConfigName("develop-config")
 		break
 	default:
