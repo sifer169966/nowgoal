@@ -1,0 +1,24 @@
+steps:
+  # build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/nowgoal-service-develop', '.']
+# push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/nowgoal-service-develop']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - 'run'
+  - 'deploy'
+  - 'nowgoal-service-develop'
+  - '--image'
+  - 'gcr.io/$PROJECT_ID/nowgoal-service-develop'
+  - '--region'
+  - 'asia-southeast1'
+  - '--allow-unauthenticated'
+  - '--platform'
+  - 'managed'
+  - '--quiet'
+
+images:
+- gcr.io/$PROJECT_ID/nowgoal-service-develop

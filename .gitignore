@@ -13,3 +13,10 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+*.env
+*-config.yaml
+/cert
+/pkg/assets
+/pkg/scripts/genjet.sh
+/data
+docker-compose.local.yml
