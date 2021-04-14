@@ -33,4 +33,4 @@ COPY --from=builder /app/server /app/cmd/
 WORKDIR /app
 
 
-CMD ["/start.sh","./cmd/server"]
+CMD ["./cmd/server"]
